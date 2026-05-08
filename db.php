@@ -1,0 +1,25 @@
+<?php
+/**
+ * ========================================
+ * INFRACTION CIMAT - CONNEXION BASE DE DONNÉES
+ * ========================================
+ */
+
+$host = 'localhost';
+$dbname = 'infraction_ciment';
+$username = 'root';
+$password = '';
+
+try {
+    $db = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+} catch(PDOException $e) {
+    die("Erreur de connexion: " . $e->getMessage());
+}
+
+function Cnx() {
+    global $db;
+    return $db;
+}
+?>
